@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+        {% block content %}
+        <div class="blog-posts">
+            <h4> {{request.user}}'s Blog</h4>
+            <h4> {{x.title}} </h4>
+            <p>{{x.created_at}}</p>
+            <p>{{x.body}}</p>
+        </div>
+        {% endblock %}

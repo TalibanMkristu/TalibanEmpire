@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+
+        {% block content %}        
+        <h3 style="color: aqua; text-align: center;"> {{request.user}} profile</h3>
+        <div >
+                <svg>
+
+                </svg>
+                {% for field in form %}
+                <form class="update-user" action="" method="POST" >
+                        {% csrf_token %}
+                        <label for="profile-pic" > {{field.name.capitalize}} </label>
+                        {{field}}
+                        {% endfor %}
+                        <button>Submit</button>
+                </form>
+        </div>
+
+        {% endblock %}
+

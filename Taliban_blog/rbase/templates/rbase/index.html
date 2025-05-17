@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+            <div class="">
+                <p class="pcolor">
+                    <div>
+                        <img style="float: left;" src="{% static 'images/Taliban.png' %}" height="200px"/>
+                        <p class="pcolor">Great for visiting. <strong>I am a backened developer</strong> utilisng 
+                        python and the django project. Being an esteemed, dedicated web application  developer, would much appreciate
+                        to collaborate into your project. I do share some tactics and skills on my <a href="{% url 'posts' %}" style="color: gold;">blog</a>
+                        app. There is hilarious content that will give you an ultimate guide to web app development.
+                        In the <a href="{% url 'zchathome' %}" style="color: gold;">zchat</a> app there is a open conversation room to host your chats.
+                        I do schedule relevant <a href="{% url 'events' %}" style="color: gold;">events</a> in my domain. <em>Visit 
+                            <a href="{% url 'events' %}" style="color: gold;">events</a> app to see scheduled events.
+                        </em>
+                        <img style="opacity: 0.9;" height="auto" width="100%" src="{% static 'images/ChatGPT Image May 13, 2025, 06_05_23 AM.png' %}" alt="">
+                        </p>
+                    </div>
+                </p>
+            </div> 
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+        {% block content %}
+        {% for post in post reversed %}
+        <div class="blog-posts">
+            <h4> @{{request.user}}</h4>
+            <a style="text-decoration: none;" href="{% url 'indposts' post.id %}"><h4> {{post.title}} </h4></a>
+            <h5 style="color: hsl(180, 81%, 40%); font-weight: bold; font-family: monospace;">{{post.created_at | timesince}}</h5>
+            <p>{{post.body | truncatewords:10}}</p>
+        </div>
+        {% endfor %}
+        {% endblock %}

@@ -1,0 +1,8 @@
+<h3 style="color: hsl(300, 88%, 68%);">Trending Topics</h3>
+<hr>
+<a href="{% url 'zchathome' %}">All Topics<span> {{topics.count}} </span></a>
+{% for topic in topics %}
+<div>
+        <a href="{% url 'zchathome' %}?q={{topic.name}}"> {{topic.name}} <span style="text-align: end;"> {{topic.room_set.all.count}} </span></a>
+</div>
+{% endfor %}

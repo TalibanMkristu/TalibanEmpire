@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+        {% block content %}
+        <div class="user-bio">
+                <h4>@{{user.username}} </h4>
+                <div>
+                        <a href="{% url 'update-user' %}">Update profile</a>
+                </div>
+        </div>
+        <div class="user-prof">
+                <div class="topics">
+                        {% include 'zchat/topics_component.html' %}
+                </div>
+                <div>
+                        {% include 'zchat/feed_component.html' %}
+                </div>
+                <div class="recent-activity">
+                        {% include 'zchat/activity_component.html' %}
+                </div>
+        </div>
+        {% endblock %}

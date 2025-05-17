@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+
+        {% block content %}
+
+        <div class="room-container">
+                <div class="conversation-corner">
+                        <h4 style="text-align: center;"> {{room.name}}</h4>
+                        <p > {{room.description}} this is description </p>
+                        <div class="message-wrapper">
+                                <h4 style="color: purple; text-align: center;">zchat Replies</h4>
+                                {% for room_message in room_messages %}
+                                <div>
+                                        <small>@{{room_message.user}} {{room_message.created | timesince}} ago </small>
+                                        <p> {{room_message.body}} </p>
+                                        {% if request.user == room_message.user %}
+                                        <a href="{% url 'delete-message' room_message.id %}"><small><button>Delete</button></small></a>
+                                        {% endif %}
+                                        <hr>
+                                </div>
+                                {% endfor %}              
+                        </div>
+                        {% if request.user.is_authenticated %}
+                        <div class="comment-form">
+                                <form method="POST" action="">
+                                        {% csrf_token %}
+                                        <input type="text" name="body" placeholder="comment "/>
+                                </form>
+                        </div>
+                </div>
+                <div class="participants">
+                        <h3>Participants</h3>
+                        {% for participant in participants %}
+                                <div>
+                                        <p><small> @{{participant.username}} </small></p>
+                                </div>
+                        {% endfor %}
+                </div>
+        </div>
+        {% endif %}
+        {% endblock %}

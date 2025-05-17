@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+
+        {% block content %}
+        <div class="zchat-page">
+                <div class="search-bar">
+                        <form class="one-input" method="GET" action="{% url 'zchathome' %}">
+                                <label for="search"></label>
+                                <input id="search" type="search" name="q" placeholder="search Rooms"/>
+                        </form>
+                </div>
+                <div class="zchat-container">
+                        <div class="topics">
+                                {% include 'zchat/topics_component.html' %}
+        
+                        </div>
+                        <div class="m-room">
+                                <h5 style="color: chartreuse; text-align: center;"> [ {{room_count}} chat rooms available ]</h5>
+                                <a  href="{% url 'create-room' %}"><button >create room</button></a>
+                                <br>
+                                
+                                {% include 'zchat/feed_component.html' %}
+        
+                        </div>
+                        <div class="recent-activity">
+                                {% include 'zchat/activity_component.html' %}
+                        </div>
+                </div>
+        </div>
+
+        {% endblock %}
+
+

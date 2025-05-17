@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>TalibanEmpire/{{page}} </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/forms.css' %}">
+    <!-- <script src='main.js'></script> -->
+</head>
+<body>
+    <main>
+        <div class="login-container">
+
+            {% if page == "register" %}
+
+            <form method="POST" action="{{request.path}}">
+
+                <style>
+                    h4 {
+                        color: hsl(0, 100%, 50%);
+                    }
+                </style>
+
+                {% csrf_token %}
+                <h2>Register</h2>
+                {% for message in messages %}
+                <h4> {{message}} </h4>
+                {% endfor %}
+                
+                <label for="uname">Username</label>
+                <input type="text" id="uname" name="username" required placeholder="Johndoe21" maxlength="30"/> 
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required maxlength="70" placeholder="johndoe@gmail.com"/>
+                <label for="passwd">Password</label>
+                <input type="password" id="passwd" name="password" required  minlength="8"/> 
+                <label for="passwd">Repeat password</label>
+                <input id="passwd" type="password" name="password2" required minlength="8"/>
+                <button type="submit">Sign Up</button>
+                <p>Have an account?<a class="a-register-login" href="{% url 'login' %}">Login</a></p>
+            </form>
+
+
+            {% else %}
+
+            <form method="POST" action="{{request.path}}">
+                <style>
+                    h4{
+                        color: hsl(0, 100%, 50%);
+                    }
+                </style>
+                <h2>Login</h2>
+                {% for message in messages %}
+                <h4> {{message}} </h4>
+                {% endfor %}
+
+                {% csrf_token %}
+                <label for="uname">Username</label>
+                <input type="text" id="uname" name="username" required placeholder="Johndoe21" maxlength="30"/>
+                <label for="passwd">Password</label>
+                <input type="password" id="passwd" name="password" required  minlength="8"/> 
+                <button type="submit">Login</button>
+                <p >Don't have an account? <a class="a-register-login" href="{% url 'register' %}">Sign Up</a></p>
+            </form>
+
+            {% endif %}
+
+        </div>
+    </main>
+
+    <footer>
+        {% include 'footerq.html' %}
+
+    </footer>
+    
+</body>
+</html>
