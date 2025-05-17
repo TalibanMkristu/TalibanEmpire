@@ -1,0 +1,1 @@
+web gunicorn Taliban_blog.wsgi:aplication --log-file -
